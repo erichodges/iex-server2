@@ -4,17 +4,27 @@ import { ApolloServer } from "apollo-server-express";
 import * as express from "express";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./resolvers";
+import * as session from "express-session";
 
 const startServer = async () => {
   const server = new ApolloServer({
     // These will be defined for both new or existing servers
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({ req }: any) => ({ req })
   });
 
   await createConnection(); // connects to the DB
 
   const app = express();
+
+  app.use(
+    session({
+      secret: "akdjklajskfjasf",
+      resave: false,
+      saveUninitialized: false
+    })
+  );
 
   server.applyMiddleware({ app }); // app is from an existing express app
 
