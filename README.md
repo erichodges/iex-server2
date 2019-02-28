@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# TypeORM/React/Apollo/Postgres
 
 Steps to run this project:
 

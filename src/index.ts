@@ -5,6 +5,7 @@ import * as express from "express";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./resolvers";
 import * as session from "express-session";
+const cors = require("cors");
 
 const startServer = async () => {
   const server = new ApolloServer({
@@ -18,6 +19,7 @@ const startServer = async () => {
 
   const app = express();
 
+  app.use(cors());
   app.use(
     session({
       secret: "akdjklajskfjasf",
