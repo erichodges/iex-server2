@@ -19,7 +19,12 @@ const startServer = async () => {
 
   const app = express();
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: "http://localhost:3012",
+      credentials: true
+    })
+  );
   app.use(
     session({
       secret: "akdjklajskfjasf",
