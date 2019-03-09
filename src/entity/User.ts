@@ -1,4 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToOne,
+  JoinColumn
+} from "typeorm";
+
+import { QuoteList } from "./QuoteList";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -10,4 +19,8 @@ export class User extends BaseEntity {
 
   @Column("text")
   password: string;
+
+  @OneToOne(() => QuoteList)
+  @JoinColumn()
+  quoteList: QuoteList;
 }

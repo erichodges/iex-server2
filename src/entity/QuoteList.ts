@@ -1,7 +1,10 @@
-import { Entity, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
-@Entity("quoteList")
+@Entity()
 export class QuoteList extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column({ type: "text", array: true })
   tickers: string[];
 }

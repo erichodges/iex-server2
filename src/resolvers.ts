@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import * as bcrypt from "bcryptjs";
-
 import { User } from "./entity/User";
+// import { QuoteList } from "./entity/QuoteList";
 
 export const resolvers: IResolvers = {
   Query: {
@@ -11,6 +11,16 @@ export const resolvers: IResolvers = {
       }
 
       return User.findOne(req.session.userId);
+    },
+    user: async (_, { req }) => {
+      if (!req.session.userId) {
+        return null;
+      }
+      const user = await User.findOne(req.session.userId, {
+        relations: ["quoteList"]
+      });
+      console.log(user);
+      return user;
     }
   },
   Mutation: {
