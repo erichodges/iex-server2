@@ -4,11 +4,16 @@ export const typeDefs = gql`
   type User {
     id: ID!
     email: String!
+    quoteList: QuoteList
+  }
+
+  type QuoteList {
+    tickers: String
   }
 
   type Query {
     me: User
-    user: User
+    user(id: Int!): User
   }
 
   type Mutation {
