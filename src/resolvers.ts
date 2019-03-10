@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import * as bcrypt from "bcryptjs";
 import { User } from "./entity/User";
-// import { QuoteList } from "./entity/QuoteList";
+import { QuoteList } from "./entity/QuoteList";
 
 export const resolvers: IResolvers = {
   Query: {
@@ -47,6 +47,12 @@ export const resolvers: IResolvers = {
       req.session.userId = user.id;
 
       return user;
+    },
+    addQuoteList: async (_, { tickers }) => {
+      await QuoteList.create({
+        tickers
+      }).save();
+      return true;
     }
   }
 };
