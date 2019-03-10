@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToOne
+} from "typeorm";
 
 @Entity()
 export class QuoteList extends BaseEntity {
@@ -7,4 +13,7 @@ export class QuoteList extends BaseEntity {
 
   @Column({ type: "text", array: true })
   tickers: string[];
+
+  @OneToOne()
+  user: User;
 }

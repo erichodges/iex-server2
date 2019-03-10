@@ -48,11 +48,10 @@ export const resolvers: IResolvers = {
 
       return user;
     },
-    addQuoteList: async (_, { tickers }) => {
-      await QuoteList.create({
+    addQuoteList: (_, { tickers }) => {
+      return QuoteList.create({
         tickers
       }).save();
-      return true;
     }
   }
 };

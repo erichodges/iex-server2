@@ -8,7 +8,7 @@ export const typeDefs = gql`
   }
 
   type QuoteList {
-    tickers: String
+    tickers: [String]
   }
 
   type Query {
@@ -16,13 +16,13 @@ export const typeDefs = gql`
     user(id: Int!): User
   }
 
-  input QuoteListInput {
-    tickers: [String]!
-  }
+  # input QuoteListInput {
+  #   tickers: [String]!
+  # }
 
   type Mutation {
     register(email: String!, password: String!): Boolean!
     login(email: String!, password: String!): User!
-    addQuoteList(tickers: QuoteListInput!): QuoteList!
+    addQuoteList(tickers: [String]!): QuoteList!
   }
 `;
