@@ -17,7 +17,7 @@ export const typeDefs = gql`
   }
 
   input QuoteListInput {
-    tickers: String!
+    tickers: [String]!
   }
 
   type Mutation {
