@@ -2,11 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  BaseEntity,
-  OneToOne,
-  JoinColumn
+  BaseEntity
+  // OneToOne,
+  // JoinColumn
 } from "typeorm";
-import { User } from "./User";
+// import { User } from "./User";
 
 @Entity()
 export class QuoteList extends BaseEntity {

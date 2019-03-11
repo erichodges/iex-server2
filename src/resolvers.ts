@@ -51,6 +51,9 @@ export const resolvers: IResolvers = {
     addQuoteList: async (_, { tickers }, { req }) => {
       console.log(req.session.userId);
       const user = await User.findOne(req.session.userId);
+      if (!user) {
+        return null;
+      }
       user.quoteList = await QuoteList.create({
         tickers
       }).save();
