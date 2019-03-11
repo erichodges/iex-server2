@@ -18,10 +18,12 @@ const startServer = async () => {
 
   await createConnection(); // connects to the DB
 
-  await QuoteList.create({
-    tickers: ["AAPL"],
-    userId: 1
-  }).save();
+  // await QuoteList.create({
+  //   tickers: ["AAPL"],
+  //   userId: 1
+  // }).save();
+
+  console.log(await QuoteList.find({ where: { userId: 1 } }));
 
   const app = express();
 

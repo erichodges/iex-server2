@@ -16,10 +16,10 @@ export class QuoteList extends BaseEntity {
   @Column({ type: "text", array: true })
   tickers: string[];
 
-  @OneToOne(() => User)
-  @JoinColumn({ name: "userId" })
-  user: User;
+  // @OneToOne(() => User)
+  // @JoinColumn({ name: "userId" })
+  // user: User;
 
-  @Column()
-  userId: number;
+  // @Column()
+  // userId: number;
 }
