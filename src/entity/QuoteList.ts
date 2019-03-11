@@ -10,8 +10,8 @@ import {
 
 @Entity()
 export class QuoteList extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column({ type: "text", array: true })
   tickers: string[];

@@ -11,8 +11,8 @@ import { QuoteList } from "./QuoteList";
 
 @Entity("users")
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column("text")
   email: string;
