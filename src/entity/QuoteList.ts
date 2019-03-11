@@ -5,6 +5,7 @@ import {
   BaseEntity,
   OneToOne
 } from "typeorm";
+import { User } from "./User";
 
 @Entity()
 export class QuoteList extends BaseEntity {
@@ -14,6 +15,6 @@ export class QuoteList extends BaseEntity {
   @Column({ type: "text", array: true })
   tickers: string[];
 
-  @OneToOne()
+  @OneToOne(() => User)
   user: User;
 }
