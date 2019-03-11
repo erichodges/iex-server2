@@ -5,6 +5,7 @@ import * as express from "express";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./resolvers";
 import * as session from "express-session";
+import { QuoteList } from "./entity/QuoteList";
 const cors = require("cors");
 
 const startServer = async () => {
@@ -16,6 +17,11 @@ const startServer = async () => {
   });
 
   await createConnection(); // connects to the DB
+
+  await QuoteList.create({
+    tickers: ["AAPL"],
+    userId: 1
+  }).save();
 
   const app = express();
 

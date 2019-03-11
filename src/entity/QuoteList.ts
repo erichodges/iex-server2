@@ -3,7 +3,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  OneToOne
+  OneToOne,
+  JoinColumn
 } from "typeorm";
 import { User } from "./User";
 
@@ -16,6 +17,7 @@ export class QuoteList extends BaseEntity {
   tickers: string[];
 
   @OneToOne(() => User)
+  @JoinColumn({ name: "userId" })
   user: User;
 
   @Column()
