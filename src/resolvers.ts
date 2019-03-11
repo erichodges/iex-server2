@@ -49,6 +49,7 @@ export const resolvers: IResolvers = {
       return user;
     },
     addQuoteList: (_, { tickers }, { req }) => {
+      console.log(req.session.userId);
       return QuoteList.create({
         tickers,
         user: req.session.userId

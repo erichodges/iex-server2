@@ -17,4 +17,7 @@ export class QuoteList extends BaseEntity {
 
   @OneToOne(() => User)
   user: User;
+
+  @Column()
+  userId: number;
 }
