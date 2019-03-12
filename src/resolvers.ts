@@ -21,6 +21,10 @@ export const resolvers: IResolvers = {
       });
       console.log(user);
       return user;
+    },
+    users: async () => {
+      const users = await User.find();
+      return users;
     }
   },
   Mutation: {
