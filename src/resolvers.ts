@@ -24,9 +24,10 @@ export const resolvers: IResolvers = {
     }
   },
   Mutation: {
-    register: async (_, { email, password }) => {
+    register: async (_, { userName, email, password }) => {
       const hashedPassword = await bcrypt.hash(password, 10);
       await User.create({
+        userName,
         email,
         password: hashedPassword
       }).save();
