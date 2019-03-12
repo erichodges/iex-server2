@@ -12,11 +12,11 @@ export const resolvers: IResolvers = {
 
       return User.findOne(req.session.userId, { relations: ["quoteList"] });
     },
-    user: async (_, { id }) => {
-      if (!id) {
+    user: async (_, __, { req }) => {
+      if (!req.session.userId) {
         return null;
       }
-      const user = await User.findOne(id, {
+      const user = await User.findOne(req.session.userId, {
         relations: ["quoteList"]
       });
       console.log(user);
