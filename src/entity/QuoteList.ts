@@ -16,6 +16,9 @@ export class QuoteList extends BaseEntity {
   @Column({ type: "text", array: true })
   tickers: string[];
 
+  @Column()
+  userId: string;
+
   @ManyToOne(() => User, user => user.quoteList)
   user: User;
 }

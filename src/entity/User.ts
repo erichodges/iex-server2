@@ -3,8 +3,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  OneToMany,
-  JoinColumn
+  OneToMany
+  // JoinColumn
 } from "typeorm";
 
 import { QuoteList } from "./QuoteList";
@@ -24,6 +24,6 @@ export class User extends BaseEntity {
   password: string;
 
   @OneToMany(() => QuoteList, quoteList => quoteList.user)
-  @JoinColumn()
-  quoteList: QuoteList;
+  // @JoinColumn()
+  quoteList: QuoteList[];
 }

@@ -59,10 +59,15 @@ export const resolvers: IResolvers = {
       if (!user) {
         return null;
       }
+      if (user.quoteList) {
+        user.quoteList.tickers.push(...tickers);
+      } else {
+        user.quoteList = await QuoteList.create({
+          tickers,
+          userId: req.session.userId
+        }).save();
+      }
 
-      user.quoteList = await QuoteList.create({
-        tickers
-      }).save();
       await user.save();
       return user.quoteList;
     }
