@@ -19,11 +19,11 @@ export const resolvers: IResolvers = {
       const user = await User.findOne(req.session.userId, {
         relations: ["quoteList"]
       });
-      console.log(user);
+      // console.log(user);
       return user;
     },
     users: async () => {
-      const users = await User.find();
+      const users = await User.find({ relations: ["quoteList"] });
       return users;
     }
   },
@@ -59,6 +59,7 @@ export const resolvers: IResolvers = {
       if (!user) {
         return null;
       }
+
       user.quoteList = await QuoteList.create({
         tickers
       }).save();
