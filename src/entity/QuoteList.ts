@@ -2,11 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  BaseEntity
-  // OneToOne,
+  BaseEntity,
+  ManyToOne
   // JoinColumn
 } from "typeorm";
-// import { User } from "./User";
+import { User } from "./User";
 
 @Entity()
 export class QuoteList extends BaseEntity {
@@ -15,4 +15,7 @@ export class QuoteList extends BaseEntity {
 
   @Column({ type: "text", array: true })
   tickers: string[];
+
+  @ManyToOne(() => User, user => user.quoteList)
+  user: User;
 }

@@ -3,7 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  OneToOne,
+  OneToMany,
   JoinColumn
 } from "typeorm";
 
@@ -23,7 +23,7 @@ export class User extends BaseEntity {
   @Column("text")
   password: string;
 
-  @OneToOne(() => QuoteList)
+  @OneToMany(() => QuoteList, quoteList => quoteList.user)
   @JoinColumn()
   quoteList: QuoteList;
 }
