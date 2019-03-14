@@ -5,7 +5,7 @@ export const typeDefs = gql`
     id: String!
     email: String!
     userName: String
-    quoteList: QuoteList
+    quoteList: [QuoteList]
   }
 
   type QuoteList {
