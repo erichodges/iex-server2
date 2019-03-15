@@ -7,7 +7,7 @@ export const resolvers: IResolvers = {
   Query: {
     me: (_, __, { req }) => {
       if (!req.session.userId) {
-        return null;
+        return "no user";
       }
 
       return User.findOne(req.session.userId, { relations: ["quoteList"] });
@@ -52,6 +52,11 @@ export const resolvers: IResolvers = {
       req.session.userId = user.id;
 
       return user;
+    },
+    logout: async (_, __, { req, res }) => {
+      await new Promise(res => req.session.destroy(() => res()));
+      res.clearCookie("connect.sid");
+      return true;
     },
     addQuoteList: async (_, { tickers }, { req }) => {
       console.log(req.session.userId);

@@ -22,5 +22,6 @@ export const typeDefs = gql`
     register(userName: String, email: String!, password: String!): Boolean!
     login(email: String!, password: String!): User!
     addQuoteList(tickers: [String]!): QuoteList!
+    logout: Boolean!
   }
 `;
