@@ -7,7 +7,7 @@ export const resolvers: IResolvers = {
   Query: {
     me: (_, __, { req }) => {
       if (!req.session.userId) {
-        return "no user";
+        return null;
       }
 
       return User.findOne(req.session.userId, { relations: ["quoteList"] });
