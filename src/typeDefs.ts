@@ -9,6 +9,8 @@ export const typeDefs = gql`
   }
 
   type QuoteList {
+    id: String
+    name: String
     tickers: [String]
   }
 
