@@ -58,9 +58,10 @@ export const resolvers: IResolvers = {
       res.clearCookie("connect.sid");
       return true;
     },
-    addQuoteList: async (_, { tickers }, { req }) => {
+    addQuoteList: async (_, { tickers, name }, { req }) => {
       console.log(req.session.userId);
       const quoteList = await QuoteList.create({
+        name,
         tickers,
         userId: req.session.userId
       }).save();
