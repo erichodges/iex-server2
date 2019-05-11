@@ -16,7 +16,7 @@ export class QuoteList extends BaseEntity {
   @Column({ type: "text", array: true })
   tickers: string[];
 
-  @Column({ unique: true })
+  @Column({ unique: false })
   name: string;
 
   @Column()
