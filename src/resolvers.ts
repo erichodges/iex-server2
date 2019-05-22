@@ -69,11 +69,11 @@ export const resolvers: IResolvers = {
     },
     updateQuoteList: async (_, { tickers, name }, { req }) => {
       console.log(req.session.userId);
-      const quoteList = await QuoteList.create({
+      const quoteList = await QuoteList.update({
         name,
         tickers,
         userId: req.session.userId
-      }).save();
+      }).update();
       return quoteList;
     }
   }
