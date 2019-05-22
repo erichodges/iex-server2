@@ -66,6 +66,15 @@ export const resolvers: IResolvers = {
         userId: req.session.userId
       }).save();
       return quoteList;
+    },
+    updateQuoteList: async (_, { tickers, name }, { req }) => {
+      console.log(req.session.userId);
+      const quoteList = await QuoteList.create({
+        name,
+        tickers,
+        userId: req.session.userId
+      }).save();
+      return quoteList;
     }
   }
 };
