@@ -67,14 +67,13 @@ export const resolvers: IResolvers = {
       }).save();
       return quoteList;
     },
-    updateQuoteList: async (_, { tickers, name }, { req }) => {
-      console.log(req.session.userId);
-      const quoteList = await QuoteList.update({
-        name,
-        tickers,
-        userId: req.session.userId
-      }).update();
-      return quoteList;
+    updateQuoteList: async (_, { id, tickers, name }, { req }) => {
+      await QuoteList.update(
+        { id: id, userId: req.session.userId },
+        { tickers, name }
+      );
+
+      return QuoteList.findOne(id);
     }
   }
 };
