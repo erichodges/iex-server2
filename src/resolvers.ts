@@ -74,6 +74,11 @@ export const resolvers: IResolvers = {
       );
 
       return QuoteList.findOne(id);
+    },
+    removeQuoteList: async (_, { id }, { req }) => {
+      await QuoteList.delete({ id: id, userId: req.session.userId });
+
+      return true;
     }
   }
 };
