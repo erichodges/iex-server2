@@ -13,7 +13,7 @@ export class QuoteList extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "text", array: true })
+  @Column({ type: "text", array: true, unique: false })
   tickers: string[];
 
   @Column({ unique: true })
