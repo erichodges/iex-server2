@@ -24,7 +24,7 @@ export const typeDefs = gql`
     register(userName: String, email: String!, password: String!): Boolean!
     login(email: String!, password: String!): User!
     addQuoteList(tickers: [String]!, name: String): QuoteList!
-    updateQuoteList(tickers: [String]!, name: String): QuoteList!
+    updateQuoteList(id: String, tickers: [String]!, name: String): QuoteList!
     removeQuoteList(id: String): Boolean!
     logout: Boolean!
   }
