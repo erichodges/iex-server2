@@ -1,10 +1,10 @@
 // import "reflect-metadata";
-import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
 import * as express from "express";
-import { typeDefs } from "./typeDefs";
-import { resolvers } from "./resolvers";
 import * as session from "express-session";
+import { createConnection } from "typeorm";
+import { resolvers } from "./resolvers";
+import { typeDefs } from "./typeDefs";
 
 const cors = require("cors");
 
@@ -16,7 +16,9 @@ const startServer = async () => {
     context: ({ req, res }: any) => ({ req, res })
   });
 
-  await createConnection(); // connects to the DB
+  await createConnection().catch(e =>
+    console.log("DB connection error:" + e.message)
+  ); // connects to the DB
 
   const app = express();
 
