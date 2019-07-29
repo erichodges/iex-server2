@@ -1,10 +1,10 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
   BaseEntity,
-  ManyToOne
+  Column,
+  Entity,
+  ManyToOne,
   // JoinColumn
+  PrimaryGeneratedColumn
 } from "typeorm";
 import { User } from "./User";
 
@@ -16,7 +16,7 @@ export class QuoteList extends BaseEntity {
   @Column({ type: "text", array: true, unique: false })
   tickers: string[];
 
-  @Column({ unique: true })
+  @Column({ unique: false })
   name: string;
 
   @Column()
