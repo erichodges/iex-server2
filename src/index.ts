@@ -1,11 +1,13 @@
 // import "reflect-metadata";
+// import express from "express";
+// import session from "express-session";
 import { ApolloServer } from "apollo-server-express";
-import * as express from "express";
-import * as session from "express-session";
 import { createConnection } from "typeorm";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
+const express = require("express");
+const session = require("express-session");
 const cors = require("cors");
 
 const startServer = async () => {
