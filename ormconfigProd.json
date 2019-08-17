@@ -4,5 +4,6 @@
   "url": "process.env.DATABASE_URL",
   "dropSchema": false,
   "synchronize": true,
-  "logging": false
+  "logging": false,
+  "entities": ["src/entity/**/*.js"]
 }
