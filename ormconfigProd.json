@@ -5,5 +5,5 @@
   "dropSchema": false,
   "synchronize": true,
   "logging": false,
-  "entities": ["src/entity/**/*.js"]
+  "entities": ["entity/**/*.js"]
 }
