@@ -21,7 +21,16 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         resolvers: resolvers_1.resolvers,
         context: ({ req, res }) => ({ req, res })
     });
-    yield typeorm_1.createConnection().catch(e => console.log("DB connection error:" + e.message));
+    process.env.NODE_ENV === "production"
+        ? yield typeorm_1.createConnection({
+            url: process.env.DATABASE_URL,
+            type: "postgres",
+            dropSchema: false,
+            synchronize: true,
+            logging: false,
+            entities: ["entity/**/*.js"]
+        })
+        : typeorm_1.createConnection().catch(e => console.log("DB connection error:" + e.message));
     const app = express();
     app.use(cors({
         origin: "http://localhost:3012",

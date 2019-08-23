@@ -1,5 +1,5 @@
 import { ApolloServer } from "apollo-server-express";
-import { createConnection, getConnectionOptions } from "typeorm";
+import { createConnection } from "typeorm";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
@@ -15,14 +15,16 @@ const startServer = async () => {
     context: ({ req, res }: any) => ({ req, res })
   });
 
-  const connectionOptions = await getConnectionOptions(process.env.NODE_ENV);
-
   process.env.NODE_ENV === "production"
     ? await createConnection({
-        ...connectionOptions,
-        url: process.env.DATABASE_URL
+        url: process.env.DATABASE_URL,
+        type: "postgres",
+        dropSchema: false,
+        synchronize: true,
+        logging: false,
+        entities: ["entity/**/*.js"]
       } as any)
-    : createConnection({ ...connectionOptions }).catch(e =>
+    : createConnection().catch(e =>
         console.log("DB connection error:" + e.message)
       ); // connects to the DB
 
