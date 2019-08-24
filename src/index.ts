@@ -28,7 +28,6 @@ const startServer = async () => {
         console.log("DB connection error:" + e.message)
       ); // connects to the DB
 
-  const port = process.env.PORT || 4000;
   const app = express();
 
   app.use(
@@ -46,6 +45,8 @@ const startServer = async () => {
   );
 
   server.applyMiddleware({ app, cors: false }); // app is from an existing express app
+
+  const port = process.env.PORT || 4000;
 
   app.listen({ port }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
