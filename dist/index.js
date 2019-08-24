@@ -31,6 +31,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
             entities: ["entity/**/*.js"]
         })
         : typeorm_1.createConnection().catch(e => console.log("DB connection error:" + e.message));
+    const port = process.env.PORT || 4000;
     const app = express();
     app.use(cors({
         origin: "http://localhost:3012",
@@ -42,7 +43,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         saveUninitialized: false
     }));
     server.applyMiddleware({ app, cors: false });
-    app.listen({ port: 4000 }, () => console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`));
+    app.listen({ port }, () => console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`));
 });
 startServer();
 //# sourceMappingURL=index.js.map
