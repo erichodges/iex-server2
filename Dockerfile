@@ -12,5 +12,5 @@ COPY ./ormconfig.json ./dist/ormconfig.json
 
 ENV NODE_ENV production
 
-EXPOSE 4000
+EXPOSE 80
 CMD ["node", "dist/index.js"]

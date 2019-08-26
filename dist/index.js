@@ -10,6 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
 const typeorm_1 = require("typeorm");
+const QuoteList_1 = require("./entity/QuoteList");
+const User_1 = require("./entity/User");
 const resolvers_1 = require("./resolvers");
 const typeDefs_1 = require("./typeDefs");
 const express = require("express");
@@ -28,10 +30,9 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
             dropSchema: false,
             synchronize: true,
             logging: false,
-            entities: ["entity/**/*.js"]
+            entities: [User_1.User, QuoteList_1.QuoteList]
         })
         : typeorm_1.createConnection().catch(e => console.log("DB connection error:" + e.message));
-    const port = process.env.PORT || 4000;
     const app = express();
     app.use(cors({
         origin: "http://localhost:3012",
@@ -43,6 +44,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         saveUninitialized: false
     }));
     server.applyMiddleware({ app, cors: false });
+    const port = process.env.PORT || 4000;
     app.listen({ port }, () => console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`));
 });
 startServer();
