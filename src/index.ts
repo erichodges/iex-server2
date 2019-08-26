@@ -1,5 +1,7 @@
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
+import { QuoteList } from "./entity/QuoteList";
+import { User } from "./entity/User";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
@@ -22,7 +24,7 @@ const startServer = async () => {
         dropSchema: false,
         synchronize: true,
         logging: false,
-        entities: ["entity/**/*.js"]
+        entities: [User, QuoteList]
       } as any)
     : createConnection().catch(e =>
         console.log("DB connection error:" + e.message)
