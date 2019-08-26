@@ -1,7 +1,14 @@
 dist/
+
+.env
+.env.dev
+.env.prod
+
 .idea/
+
 .vscode/
 node_modules/
+
 build/
 tmp/
 temp/

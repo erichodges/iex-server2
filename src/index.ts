@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import { QuoteList } from "./entity/QuoteList";
@@ -34,7 +35,7 @@ const startServer = async () => {
 
   app.use(
     cors({
-      origin: "http://localhost:3012",
+      origin: process.env.FRONTEND_HOST,
       credentials: true
     })
   );
