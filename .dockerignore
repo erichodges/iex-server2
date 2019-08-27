@@ -4,3 +4,4 @@
 !./dist
 !./ormconfigProd.json
 !./ormconfig.json
+!.env.prod
