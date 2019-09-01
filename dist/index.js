@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("dotenv").config();
 const apollo_server_express_1 = require("apollo-server-express");
 const typeorm_1 = require("typeorm");
 const QuoteList_1 = require("./entity/QuoteList");
@@ -35,7 +36,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         : typeorm_1.createConnection().catch(e => console.log("DB connection error:" + e.message));
     const app = express();
     app.use(cors({
-        origin: "http://localhost:3012",
+        origin: process.env.FRONTEND_HOST,
         credentials: true
     }));
     app.use(session({
