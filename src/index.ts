@@ -8,6 +8,7 @@ import { typeDefs } from "./typeDefs";
 
 const express = require("express");
 const session = require("express-session");
+const redis = require("redis");
 const cors = require("cors");
 
 const startServer = async () => {
@@ -39,8 +40,13 @@ const startServer = async () => {
       credentials: true
     })
   );
+
+  let RedisStore = require("connect-redist")(session);
+  let client = redis.createClient();
+
   app.use(
     session({
+      store: new RedisStore({ client }),
       secret: "akdjklajskfjasf",
       resave: false,
       saveUninitialized: false
