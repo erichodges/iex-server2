@@ -41,8 +41,8 @@ const startServer = async () => {
     })
   );
 
-  let RedisStore = require("connect-redist")(session);
-  let client = redis.createClient();
+  let RedisStore = require("connect-redis")(session);
+  let client = redis.createClient(process.env.REDIS_URL);
 
   app.use(
     session({

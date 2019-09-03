@@ -17,6 +17,7 @@ const resolvers_1 = require("./resolvers");
 const typeDefs_1 = require("./typeDefs");
 const express = require("express");
 const session = require("express-session");
+const redis = require("redis");
 const cors = require("cors");
 const startServer = () => __awaiter(this, void 0, void 0, function* () {
     const server = new apollo_server_express_1.ApolloServer({
@@ -39,7 +40,10 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         origin: process.env.FRONTEND_HOST,
         credentials: true
     }));
+    let RedisStore = require("connect-redis")(session);
+    let client = redis.createClient(process.env.REDIS_URL);
     app.use(session({
+        store: new RedisStore({ client }),
         secret: "akdjklajskfjasf",
         resave: false,
         saveUninitialized: false
