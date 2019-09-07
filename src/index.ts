@@ -19,6 +19,8 @@ const startServer = async () => {
     context: ({ req, res }: any) => ({ req, res })
   });
 
+  console.log(process.env.NODE_ENV);
+
   process.env.NODE_ENV === "production"
     ? await createConnection({
         url: process.env.DATABASE_URL,
@@ -28,12 +30,6 @@ const startServer = async () => {
         logging: false,
         entities: [User, QuoteList]
       } as any)
-    : createConnection().catch(e =>
-        console.log("DB connection error:" + e.message)
-      ); // connects to the DB
-
-  process.env.NODE_ENV === "development"
-    ? await createConnection()
     : createConnection().catch(e =>
         console.log("DB connection error:" + e.message)
       );
