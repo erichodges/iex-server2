@@ -19,7 +19,7 @@ const startServer = async () => {
     context: ({ req, res }: any) => ({ req, res })
   });
 
-  console.log(process.env.NODE_ENV);
+  console.log(process.env.FRONTEND_HOST);
 
   process.env.NODE_ENV === "production"
     ? await createConnection({

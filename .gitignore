@@ -2,6 +2,7 @@ dist/
 
 .env
 .env.dev
+.env.development
 .env.prod
 
 .idea/
