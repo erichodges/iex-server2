@@ -32,6 +32,12 @@ const startServer = async () => {
         console.log("DB connection error:" + e.message)
       ); // connects to the DB
 
+  process.env.NODE_ENV === "development"
+    ? await createConnection()
+    : createConnection().catch(e =>
+        console.log("DB connection error:" + e.message)
+      );
+
   const app = express();
 
   app.use(
