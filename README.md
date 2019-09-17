@@ -1,4 +1,4 @@
-# Apollo/TypeORM/Postgres
+# Node/Express/Apollo/TypeORM/Postgres
 
 Steps to run this project:
 
