@@ -1,4 +1,4 @@
-# TypeORM/React/Apollo/Postgres
+# Apollo/TypeORM/Postgres
 
 Steps to run this project:
 
