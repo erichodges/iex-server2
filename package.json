@@ -31,7 +31,7 @@
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.10",
     "request": "^2.88.0",
-    "typeorm": "0.2.14",
+    "typeorm": "0.2.25",
     "uglify-js": "^3.4.9"
   },
   "scripts": {
