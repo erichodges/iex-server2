@@ -14,7 +14,7 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
-    "apollo-server-express": "^2.4.8",
+    "apollo-server-express": "^2.14.2",
     "bcryptjs": "^2.4.3",
     "cli": "^1.0.1",
     "connect-redis": "^4.0.1",
