@@ -24,7 +24,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "graphql": "^14.1.1",
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.7.7",
     "hawk": "^7.0.10",
     "hoek": "^6.1.2",
     "pg": "^7.3.0",
